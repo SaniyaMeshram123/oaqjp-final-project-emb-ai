@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This Final Project demonstrates an Emotion Detection application using Natural Language Processing (NLP) and the IBM Watson Emotion Prediction service.
+This project demonstrates an Emotion Detection application using Natural Language Processing (NLP) and the IBM Watson Emotion Prediction service.
 
 The application analyzes text entered by a user and identifies five emotions: anger, disgust, fear, joy, and sadness. It also determines the dominant emotion in the given text.
 
@@ -24,7 +24,7 @@ The application is developed using Python and Flask, with a web interface that a
 - **Dominant Emotion:** Determines the emotion with the highest score.
 - **Flask Web Interface:** Allows users to submit text for analysis.
 - **Input Validation:** Handles blank text input.
-- **Error Handling:** Handles HTTP 400 responses and unavailable service responses.
+- **Error Handling:** Handles HTTP 400 responses and service errors.
 - **Unit Testing:** Tests the emotion detection function.
 - **Static Code Analysis:** Uses Pylint to check code quality.
 
@@ -44,17 +44,13 @@ The application is developed using Python and Flask, with a web interface that a
 
 ```text
 oaqjp-final-project-emb-ai/
-│
 ├── EmotionDetection/
 │   ├── __init__.py
 │   └── emotion_detection.py
-│
 ├── static/
 │   └── mywebscript.js
-│
 ├── templates/
 │   └── index.html
-│
 ├── test_emotion_detection.py
 ├── server.py
 └── README.md
@@ -73,9 +69,7 @@ The function returns a dictionary containing:
 - `sadness`
 - `dominant_emotion`
 
-The dominant emotion is the emotion with the highest score.
-
-If the input is blank, the service returns an HTTP 400 response, or an error prevents analysis, the function returns `None` values for the emotion scores and dominant emotion.
+The dominant emotion is the emotion with the highest score. Error responses and invalid inputs should be handled according to the application's error-handling logic.
 
 ## Flask Web Application
 
@@ -92,12 +86,10 @@ The application validates blank input and displays an appropriate error message 
 
 Unit tests are implemented in `test_emotion_detection.py` using Python's `unittest` framework.
 
-The tests verify the dominant emotion result and the handling of blank input. The IBM Watson request is mocked in the dominant emotion test so the test can run without contacting the external service.
-
 Run the unit tests using:
 
 ```bash
-python -m unittest -v test_emotion_detection.py
+python3 test_emotion_detection.py
 ```
 
 ## Static Code Analysis
@@ -107,35 +99,24 @@ Pylint is used to analyze the Flask server code for coding standards and potenti
 Run the analysis using:
 
 ```bash
-python -m pylint server.py
+python3 -m pylint server.py
 ```
-
-The recorded Pylint score for this project was **10.00/10**.
 
 ## How to Run the Application
 
-### 1. Create and activate a virtual environment
-
-On Windows PowerShell:
-
-```powershell
-python -m venv .venv
-.venv\Scripts\Activate.ps1
-```
-
-### 2. Install the required packages
+### 1. Install the required packages
 
 ```bash
-python -m pip install Flask requests pylint
+python3 -m pip install Flask requests pylint
 ```
 
-### 3. Start the Flask server
+### 2. Start the Flask server
 
 ```bash
-python server.py
+python3 server.py
 ```
 
-### 4. Open the application
+### 3. Open the application
 
 Open the following address in your web browser:
 
@@ -143,10 +124,8 @@ http://127.0.0.1:5000
 
 Enter text into the input field and run the emotion analysis.
 
-**Note:** Successful live emotion predictions require the IBM Watson NLP service endpoint to be accessible. If the service is unavailable, the application displays an error message instead of a prediction.
+**Note:** Successful live emotion predictions require the IBM Watson NLP service endpoint to be accessible.
 
 ## Conclusion
 
-This Final Project demonstrates the development of an NLP-based emotion detection application using Python, Flask, and the IBM Watson Emotion Prediction service. It includes input validation, error handling, unit testing, and static code analysis.
-
-The project illustrates how NLP can be integrated into a web application to identify emotions expressed in text.
+This project demonstrates the development of an NLP-based emotion detection application using Python, Flask, and the IBM Watson Emotion Prediction service. It includes input validation, error handling, unit testing, and static code analysis.
